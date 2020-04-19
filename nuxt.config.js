@@ -1,5 +1,5 @@
 export default {
-  mode: 'spa',
+  mode: 'universal',
   /*
    ** Headers of the page
    */
@@ -46,13 +46,9 @@ export default {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
     // modules for full static before `nuxt export` (coming in v2.12)
-
     '@/modules/static',
-
     '@/modules/crawler',
-
     // This is where you import the new plugin
-
     '@nuxtjs/prismic'
   ],
   // This is where you configure your settings for the new plugin
