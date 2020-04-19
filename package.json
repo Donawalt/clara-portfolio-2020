@@ -15,7 +15,9 @@
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/prismic": "^1.1.1",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "prismic-javascript": "^2.7.1",
+    "prismic-vue": "^2.0.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",
