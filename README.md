@@ -19,4 +19,6 @@ $ npm run start
 $ npm run generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+All content and code base on top of nuxt is not reusable !
+
+Made by Donaël WALTER 
