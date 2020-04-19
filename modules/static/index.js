@@ -3,7 +3,7 @@
 const path = require('path')
 const { writeFile, ensureDir } = require('fs-extra')
 
-let extractPayload = function({ html, route }, windowNamespace){
+let extractPayload = function ({ html, route }, windowNamespace) {
   let chunks = html.split(`<script>window.${windowNamespace}=`)
   let pre = chunks[0]
   let payload = chunks[1].split('</script>').shift()
@@ -16,7 +16,7 @@ let extractPayload = function({ html, route }, windowNamespace){
   }
 }
 
-let writePayload = async function (payload, dir, windowNamespace){
+let writePayload = async function (payload, dir, windowNamespace) {
   // Make sure the directory exists
   await ensureDir(dir)
 
@@ -38,7 +38,7 @@ module.exports = function (moduleOptions) {
     ...moduleOptions
   }
 
-  this.nuxt.hook('generate:page', async page => {
+  this.nuxt.hook('generate:page', async (page) => {
     if (!this.nuxt.options.generate.subFolders) {
       throw new Error('generate.subFolders should be true for @nuxt/static')
     }
