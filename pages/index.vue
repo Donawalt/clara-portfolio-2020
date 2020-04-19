@@ -13,17 +13,17 @@
 
 <script>
 export default {
-  async asyncData({ $prismic, error }) {
+  async asyncData ({ $prismic, error }) {
     try {
-      const document = (await $prismic.api.getSingle('home')).data;
+      const document = (await $prismic.api.getSingle('home')).data
       return {
         document
-      };
+      }
     } catch (e) {
-      error({ statusCode: 404, message: 'Page not found' });
+      error({ statusCode: 404, message: 'Page not found' })
     }
   }
-};
+}
 </script>
 
 <style lang='scss'>
