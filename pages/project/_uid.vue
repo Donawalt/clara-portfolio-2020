@@ -1,12 +1,15 @@
 <template>
-    
+    <div class='conatainer'>
+        {{ $prismic.asText(document['project-banner'][0].title_of_the_project) }}
+    </div>
 </template>
 
 <script>
 export default {
-    async asyncData ({ $prismic, error }) {
+    async asyncData ({ params, $prismic, error }) {
     try {
         const document = (await $prismic.api.getByUID('project_post', params.uid)).data
+        console.log(document);
         return {
             document
         }
