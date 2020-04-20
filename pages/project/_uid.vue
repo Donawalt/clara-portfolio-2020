@@ -5,6 +5,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 export default {
     async asyncData ({ params, $prismic, error }) {
     try {
