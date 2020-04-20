@@ -1,0 +1,12 @@
+{
+    "Main" : {
+      "introduction" : {
+        "type" : "StructuredText",
+        "config" : {
+          "single" : "heading1",
+          "label" : "Introduction",
+          "placeholder" : "Hello I am **** I study **** at *****"
+        }
+      }
+    }
+  }

@@ -1,0 +1,90 @@
+{
+    "Main" : {
+      "uid" : {
+        "type" : "UID",
+        "config" : {
+          "label" : "Project Slug",
+          "placeholder" : "photo-n-et-b"
+        }
+      },
+      "project-banner" : {
+        "type" : "Group",
+        "config" : {
+          "fields" : {
+            "project_image_banner" : {
+              "type" : "Image",
+              "config" : {
+                "constraint" : { },
+                "thumbnails" : [ ],
+                "label" : "Project Image Banner"
+              }
+            },
+            "title_of_the_project" : {
+              "type" : "StructuredText",
+              "config" : {
+                "single" : "heading1",
+                "label" : "Title of the project",
+                "placeholder" : "Photographie Noir & Blanc concour BA ..."
+              }
+            },
+            "description_du_projet" : {
+              "type" : "StructuredText",
+              "config" : {
+                "multi" : "paragraph, strong, em, hyperlink",
+                "allowTargetBlank" : true,
+                "label" : "Description du projet",
+                "placeholder" : "Un projet photographique réaliser dans le cadre de ..."
+              }
+            }
+          },
+          "label" : "Project_Banner"
+        }
+      },
+      "body" : {
+        "type" : "Slices",
+        "fieldset" : "Slice zone",
+        "config" : {
+          "labels" : { },
+          "choices" : {
+            "image_gallery" : {
+              "type" : "Slice",
+              "fieldset" : "Image Gallery",
+              "description" : "Image Gallery with a title and a caption for each image",
+              "icon" : "photo_library",
+              "non-repeat" : {
+                "name_of_the_gallery" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "single" : "heading2",
+                    "label" : "Name of the gallery",
+                    "placeholder" : "My beautiful paintings"
+                  }
+                }
+              },
+              "repeat" : {
+                "image_captions" : {
+                  "type" : "StructuredText",
+                  "config" : {
+                    "multi" : "paragraph",
+                    "label" : "Image captions",
+                    "placeholder" : "Images captions"
+                  }
+                },
+                "gallery_image" : {
+                  "type" : "Image",
+                  "config" : {
+                    "constraint" : {
+                      "width" : null,
+                      "height" : null
+                    },
+                    "thumbnails" : [ ],
+                    "label" : "Gallery Image"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

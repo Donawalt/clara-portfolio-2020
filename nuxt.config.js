@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export default {
   mode: 'universal',
   /*
@@ -35,6 +37,9 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
+    // modules for full static before `nuxt export` (coming in v2.12)
+    '~/modules/static',
+    '~/modules/crawler',
     '@nuxtjs/eslint-module',
     '@nuxtjs/style-resources'
   ],
@@ -45,9 +50,6 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    // modules for full static before `nuxt export` (coming in v2.12)
-    '@/modules/static',
-    '@/modules/crawler',
     // This is where you import the new plugin
     '@nuxtjs/prismic'
   ],
@@ -55,7 +57,8 @@ export default {
   prismic: {
     endpoint: 'https://claraportfolio.cdn.prismic.io/api/v2',
     linkResolver: '@/plugins/link-resolver',
-    htmlSerializer: '@/plugins/html-serializer'
+    htmlSerializer: '@/plugins/html-serializer',
+    preview: '/preview/'
   },
   /*
    ** Styles Ressources
@@ -71,11 +74,18 @@ export default {
      ** You can extend webpack config here
      */
     extend (config, ctx) {
-      // to transform link with <nuxt-link> for the htmlSerializer
-      config.resolve.alias['vue'] = 'vue/dist/vue.common'
     }
   },
   generate: {
-    fallback: '404.html' // Netlify reads a 404.html, Nuxt will load as an SPA
+    fallback: '404.html',
+    routes () {
+      return axios.get('https://claraportfolio.cdn.prismic.io/api/v1/documents/search?ref=Xp12aBIAACIAyOI_&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Xp12JBIAACEAyOEP%22%29+%5D%5D')
+        .then((res) => {
+          console.log(res)
+          return res.data.results.map((project) => {
+            return '/project/' + project.uid
+          })
+        })
+    }// Netlify reads a 404.html, Nuxt will load as an SPA
   }
 }
