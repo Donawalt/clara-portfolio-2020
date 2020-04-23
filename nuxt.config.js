@@ -55,7 +55,7 @@ export default {
   ],
   // This is where you configure your settings for the new plugin
   prismic: {
-    endpoint: 'https://claraportfolio.cdn.prismic.io/api/v2',
+    endpoint: 'https://claraportfolio.cdn.prismic.io/api/v2', // Your endpoint here
     linkResolver: '@/plugins/link-resolver',
     htmlSerializer: '@/plugins/html-serializer',
     preview: '/preview/'
@@ -78,10 +78,9 @@ export default {
   },
   generate: {
     fallback: '404.html',
-    routes () {
-      return axios.get('https://claraportfolio.cdn.prismic.io/api/v1/documents/search?ref=Xp12aBIAACIAyOI_&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Xp12JBIAACEAyOEP%22%29+%5D%5D')
+    routes () { // Made an axios request for generate nested post during generate process 
+      return axios.get('https://claraportfolio.cdn.prismic.io/api/v1/documents/search?ref=Xp12aBIAACIAyOI_&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Xp12JBIAACEAyOEP%22%29+%5D%5D') // at(document.id, "project_post")
         .then((res) => {
-          console.log(res)
           return res.data.results.map((project) => {
             return '/project/' + project.uid
           })

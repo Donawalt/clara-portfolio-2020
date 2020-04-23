@@ -1,1 +1,52 @@
-$background-color : white;
+$background-color : #FFF1E3;
+$background-menu : #71B885;
+
+// Font Face \\
+@font-face {
+  font-family: 'Times';
+  font-weight: normal;
+  src: url('/static/fonts/time-new-roman/TIMES.TTF'); /* IE9 Compat Mode */
+  src: url('/static/fonts/time-new-roman/TIMES.TTF') format('ttf');
+}
+
+@font-face {
+    font-family: 'Times-Bold';
+    font-weight: normal;
+    src: url('/static/fonts/time-new-roman/TIMESBD.TTF'); /* IE9 Compat Mode */
+    src: url('/static/fonts/time-new-roman/TIMESBD.TTF') format('ttf');
+  }
+
+@font-face {
+    font-family: 'Times-Bold-Italic';
+    font-weight: normal;
+    src: url('/static/fonts/time-new-roman/TIMESBI.TTF'); /* IE9 Compat Mode */
+    src: url('/static/fonts/time-new-roman/TIMESBI.TTF') format('ttf');
+  }
+
+@font-face {
+    font-family: 'Times-Italic';
+    font-weight: normal;
+    src: url('/static/fonts/time-new-roman/TIMESI.TTF'); /* IE9 Compat Mode */
+    src: url('/static/fonts/time-new-roman/TIMESI.TTF') format('ttf');
+  }
+
+@font-face {
+font-family: 'Roboto';
+font-weight: normal;
+src: url('/static/fonts/ROBOTO-REGULAR.TTF'); /* IE9 Compat Mode */
+src: url('/static/fonts/ROBOTO-REGULAR.TTF') format('ttf');
+}
+
+@font-face {
+    font-family: 'Roboto-italic';
+    font-weight: normal;
+    src: url('/static/fonts/ROBOTO-ITALIC.TTF'); /* IE9 Compat Mode */
+    src: url('/static/fonts/ROBOTO-ITALIC.TTF') format('ttf');
+}
+
+@font-face {
+    font-family: 'Roboto-bold';
+    font-weight: normal;
+    src: url('/static/fonts/ROBOTO-BOLD.TTF'); /* IE9 Compat Mode */
+    src: url('/static/fonts/ROBOTO-BOLD.TTF') format('ttf');
+}

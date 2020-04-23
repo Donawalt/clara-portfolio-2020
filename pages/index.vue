@@ -1,13 +1,18 @@
 <template>
   <div class="container">
-    <div>
-      <h1 class="title">clara-portfolio</h1>
-      <h2 class="subtitle">{{ $prismic.asText(document.introduction) }}</h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
-        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
+    <div class='b-title-home'>
+      <h1 class="title"><span class='bold'>Clara</span> Barthold<br/> Malat</h1>
+    </div>
+    <div class='b-slider-info-home'>
+      <div class='e-compteur'>
+        <p class="compteur-text"><span class="compteur-current-number">1</span>-<span>3</span></p>
+      </div>
+      <div class='e-project-info-slider'>
+        <p class='project-title end'>Photographie Lyon</p>
+        <p class="project-date end">Février 2020</p>
       </div>
     </div>
+    <div class='b-slider-img'><img src="" alt=""></div>
   </div>
 </template>
 
@@ -28,34 +33,56 @@ export default {
 
 <style lang='scss'>
 .container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  overflow: hidden;
+  padding: 3.3333333vw;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: [col-1]1fr [col-2]1fr [col-3]1fr [col-4]1fr;
+  grid-template-rows: [row-1]1fr [row-2]1fr [row-3]1fr [row-4]1fr;
+  column-gap:1.666666667vw;
+  row-gap: 1.666666667vw;
   background-color: $background-color;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+  .b-title-home{
+    grid-row: row-4 / 4;
+    font-size: 50px;
+    text-transform: uppercase;
+    .title>.bold{
+      font-family: 'Roboto-bold', 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-style: initial;
+    }
+    .title{
+      font-family: 'Times-Italic', 'Times New Roman', Times, serif;
+      font-style: italic;
+    }
+  }
+  .b-slider-info-home{
+    display: flex;
+    justify-content: space-between;
+    grid-column: col-2/2;
+    grid-row: row-1/5;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    div{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      font-size: 25px;
+      line-height: 30px;
+      p.end{
+        text-align:right;
+      }
+      p.project-title{
+        font-weight:bold;
+      }
+    }
+  }
+  .b-slider-img{
+    background-color: $background-menu;
+    grid-column: col-3/col-;
+    grid-row: row-1/5;
+    margin-top: -3.3333333vw;
+    margin-bottom: -3.3333333vw;
+  }
 }
 </style>
