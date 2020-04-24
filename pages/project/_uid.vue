@@ -2,29 +2,66 @@
     <div class='container'>
         <!-- {{ $prismic.asText(document['project-banner'][0].title_of_the_project) }} -->
         <section class='b-project-header'>
-            <div class='banner' :style="{ backgroundImage: `url(${document['project-banner'][0].project_image_banner.url})` }">
+            <div class='banner' :style="{ backgroundImage: `url(${document.image_mis_en_avant.url})` }">
             </div>
             <h1 class='project-title'>
-                {{ $prismic.asText(document['project-banner'][0].title_of_the_project) }}
+                {{ $prismic.asText(document.titre_du_projet) }}
             </h1>
         </section>
         <section class='b-project-description'>
             <div class='description'>
                 <h2>Introduction</h2>
-                <p><!--{{ $prismic.asText(document['project-banner'][0].description_du_projet) }}-->FROM ITS INCEPTION, ROLLS-ROYCE HAS BEEN A SPECTACULAR MASTER OF CRAFT. FROM FAMOUS MOTORCARS TO SPECTACULAR AIRPLANES. AND TODAY, THEY CONTINUE TO USE THEIR EXPERTISE TO CONCEIVE BEAUTIFUL OBJECTS SUCH AS THE ARTFUL CHAMPAGNE CHEST. "A TRIUMPH OF DESIGN AND PRECISION ENGINEERING”. MY ROLE WAS TO CONCEIVE AN ART DIRECTION THAT WOULD ALLOW THE CHAMPAGNE CHEST TO SHINE IN ALL ITS GLORY. TO ACHIEVE THIS, I JUXTAPOSED THE INTRICATE LUXURY OF THE CHAMPAGNE CHEST AGAINST A MINIMALIST AND HARSH ENVIRONMENT.</p>
+                <p>{{ $prismic.asText(document.description_de_mon_projet) }}</p>
             </div>
         </section>
-        <section class='b-project-body'></section>
+        <section class='b-project-body' v-for="(slice, index) in document.body" :key="'slice-' + index">
+            <template v-if="slice.slice_type === 'deux_image'">
+                <template  v-if="slice.primary.size_img === 'true'">
+                    <section class="deux right">
+                        <span class='left-image'><prismic-image :field='slice.primary.left_img'></prismic-image></span>
+                        <span class='right-image'><prismic-image :field='slice.primary.right_img'></prismic-image></span>
+                    </section>
+                </template>
+                <template v-if="slice.primary.size_img != 'true'">
+                    <section class='deux left'>
+                        <span class='left-image'><prismic-image :field='slice.primary.left_img'></prismic-image></span>
+                        <span class='right-image'><prismic-image :field='slice.primary.right_img'></prismic-image></span>
+                    </section>
+                </template>
+            </template>
+            <template v-if="slice.slice_type === 'fullscreen_image_'">
+                <prismic-image class='img-full' :field="slice.primary.img_full"/>
+            </template>
+            <template v-if="slice.slice_type === 'tryptique_image'">
+                <div class="img-tri">
+                    <span>
+                    <prismic-image  :field="slice.primary.left_img"/>
+                    <prismic-image  :field="slice.primary.center_img"/>
+                    <prismic-image  :field="slice.primary.right_img"/>
+                    </span>
+                </div>
+            </template>
+            <template v-if="slice.slice_type === 'image_unique_'">
+                <div class='image-unique'>
+                    <prismic-image :field="slice.primary.image"/>
+                </div>
+            </template>
+            <template v-if="slice.slice_type === 'video_'">
+                <prismic-embed class='embed-video' :field="slice.primary.liens_video"/>
+            </template>
+        </section>
         <section class='b-project-footer'>
             <hr class='hr-top'/>
             <div class='next-project'>
-                <p class="title">
-                    Séries photographiques 007
-                </p>
-                <div class='next-link-container'>
-                    <img class='next-project-thumbnail'>
-                    <p>NEXT</p>
-                </div>
+                <template v-if='next = undefined'>
+                    <p class="title">
+                        Séries photographiques 007
+                    </p>
+                    <div class='next-link-container'>
+                        <img class='next-project-thumbnail'>
+                        <p>NEXT</p>
+                    </div>
+                </template>
             </div>
             <hr class='hr-bottom'/>
         </section>
@@ -37,7 +74,7 @@ export default {
     async asyncData ({ params, $prismic, error }) {
     try {
         const document = (await $prismic.api.getByUID('project_post', params.uid)).data
-        console.log(document);
+        const posts = (await $prismic.api.query($prismic.predicates.at('document.type', 'project_post')))
         return {
             document
         }
@@ -50,7 +87,7 @@ export default {
 
 <style lang="scss">
 .container{
-    width: 100w;
+    width: 100vw;
     min-height: 100vh;
     background-color: $background-color;
     section {
@@ -109,9 +146,86 @@ export default {
                 }
             }
         }
-       // &.b-project-body{
-
-        //}
+        &.b-project-body{
+            display: block;
+            padding: 0px;
+            position: relative;
+            .img-full{
+                width: 100vw;
+            }
+            .embed-video{
+                width: 100%;
+                padding: 3.3333333vw;
+                height: 100vh;
+                width: 100vw;
+                iframe{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .img-tri{
+                height:100vw;
+                width:100vw;
+                
+                img{
+                    width:  22.083333333vw;
+                    margin: 1.666666667vw;
+                } 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .image-unique{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100vw;
+                height: 100vh;
+                img{
+                   height: 70vh;
+                   max-width: 45.83333327vw;;
+                }
+            }
+            .deux{
+                padding: 3.3333333vw;
+                display: grid;
+                grid-template-columns: [col-1]1fr [col-2]1fr [col-3]1fr [col-4]1fr;
+                grid-template-rows: none;
+                row-gap: 0px;
+                column-gap: 1.666666667vw;
+                min-height: 100vh;
+                &.right{
+                    .right-image{
+                        img{
+                            width:22.083333333vw;
+                        }
+                    }
+                }
+                &.left{
+                    .left-image{
+                        img{
+                            width:22.083333333vw;
+                        }
+                    }
+                }
+                img{
+                    width:100%;
+                }
+                span{
+                    display: flex; 
+                    justify-content: center;
+                    align-items: center;
+                }
+                .left-image{
+                    grid-column: col-1/col-3;
+                    grid-row: 1/2;
+                }
+                .right-image{
+                    grid-column: col-3/col-;
+                    grid-row: 1/2;
+                }
+            }
+        }
         &.b-project-footer{
             .hr-top, .hr-bottom{
                 grid-column: col-2 /col-4;
