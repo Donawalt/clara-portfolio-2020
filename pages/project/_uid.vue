@@ -85,7 +85,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .container{
     width: 100vw;
     min-height: 100vh;
@@ -158,7 +158,7 @@ export default {
                 padding: 3.3333333vw;
                 height: 100vh;
                 width: 100vw;
-                iframe{
+                &>iframe{
                     width: 100%;
                     height: 100%;
                 }
@@ -281,4 +281,17 @@ export default {
         }
     }
 }
+</style>
+
+<style lang='scss'>
+    .embed-video{
+                width: 100%;
+                padding: 3.3333333vw;
+                height: 100vh;
+                width: 100vw;
+                iframe{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
 </style>

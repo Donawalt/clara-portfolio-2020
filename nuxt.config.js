@@ -78,7 +78,7 @@ export default {
   },
   generate: {
     fallback: '404.html',
-    routes () { // Made an axios request for generate nested post during generate process 
+    routes () { // Made an axios request for generate nested post during generate process
       return axios.get('https://claraportfolio.cdn.prismic.io/api/v1/documents/search?ref=Xp12aBIAACIAyOI_&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Xp12JBIAACEAyOEP%22%29+%5D%5D') // at(document.id, "project_post")
         .then((res) => {
           return res.data.results.map((project) => {

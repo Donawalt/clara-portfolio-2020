@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@nuxtjs/dotenv": "^1.4.0",
+    "@nuxtjs/observable": "0.0.1-alpha",
     "@nuxtjs/prismic": "^1.1.1",
     "@nuxtjs/pwa": "^3.0.0-0",
     "axios": "^0.19.2",

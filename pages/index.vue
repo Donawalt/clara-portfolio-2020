@@ -31,7 +31,7 @@ export default {
 }
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 .container {
   overflow: hidden;
   padding: 3.3333333vw;
