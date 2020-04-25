@@ -5,28 +5,56 @@
     </div>
     <div class='b-slider-info-home'>
       <div class='e-compteur'>
-        <p class="compteur-text"><span class="compteur-current-number">1</span>-<span>3</span></p>
+        <p class="compteur-text"><span class="compteur-current-number">{{ active }}</span>-<span>{{maxValue}}</span></p>
       </div>
       <div class='e-project-info-slider'>
-        <p class='project-title end'>Photographie Lyon</p>
+        <p class='project-title end'>{{ active > 0 ? results[active-1].data.titre_du_projet[0].text : ''}}</p>
         <p class="project-date end">Février 2020</p>
       </div>
     </div>
-    <div class='b-slider-img'><img src="" alt=""></div>
+    <div class='b-slider-img'>
+      <nuxt-link :to="'/project/'+ results[active-1].uid">
+        <carousel :data='results' :max='results.length' :active='active' :maxValue.sync='maxValue'/>
+      </nuxt-link>
+    </div>
   </div>
 </template>
 
 <script>
+import carousel from '@/components/carousel/carousel'
 export default {
+  data: () => ({
+    active: 1,
+    maxValue: 0
+  }),
+  components: {
+    carousel
+  },
   async asyncData ({ $prismic, error }) {
     try {
       const document = (await $prismic.api.getSingle('home')).data
+      const posts = await $prismic.api.query(
+        $prismic.predicates.at('document.type', 'project_post')
+      )
       return {
-        document
+        document,
+        posts,
+        results: posts.results
       }
     } catch (e) {
       error({ statusCode: 404, message: 'Page not found' })
     }
+  },
+  methods: {
+    next () {
+      setInterval(() => {
+        if (this.active === this.maxValue) { this.active = 0 }
+        this.active++
+      }, 5000)
+    }
+  },
+  mounted () {
+    this.next()
   }
 }
 </script>
@@ -83,6 +111,7 @@ export default {
     grid-row: row-1/5;
     margin-top: -3.3333333vw;
     margin-bottom: -3.3333333vw;
+    overflow:hidden;
   }
 }
 </style>
