@@ -88,10 +88,17 @@ export default {
     a{
       text-decoration: none;
       color:black;
+      transition: 500ms;
+      &:hover{
+      color: transparent;
+      -webkit-text-stroke: 1px black;
+      transition: 500ms;
+      }
     }
     a.nuxt-link-exact-active{
       color: transparent;
       -webkit-text-stroke: 1px black;
+      transition: 500ms;
     }
   }
 }

@@ -55,11 +55,11 @@ export default {
     }
     .active{
         z-index: 100;
-        animation: appear 500ms ease-in-out;
+        animation: appear 700ms ease-out;
     }
     .hidden{
         z-index: 50;
-        animation: hidden 1500ms ease-in-out;
+        animation: hidden 1600ms ease-in-out;
     }
 
     @keyframes hidden {

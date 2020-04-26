@@ -4,12 +4,12 @@
             <div id='b-menu-container' class="b-menu-container" :class="{ 'active' : isOpen }" @click.prevent="toggle">
                 <template v-if='isOpen'>
                     <slot>
-                        <img src="~assets/images/Menu-active.svg">
+                        <img src="~assets/images/Menu-active.min.svg">
                     </slot>
                 </template>
                 <template v-else>
                     <slot>
-                        <img src="~assets/images/Menu.svg">
+                        <img src="~assets/images/Menu.min.svg">
                     </slot>
                 </template>
             </div>
@@ -18,24 +18,24 @@
             <div id='b-menu-container' class="b-menu-container" :class="{ 'active' : isOpen }" @click.prevent="toggle">
                 <template v-if='isOpen'>
                     <slot>
-                        <img src="~assets/images/Menu-active.svg">
+                        <img src="~assets/images/Menu-active.min.svg">
                     </slot>
                 </template>
                 <template v-else>
                     <slot>
-                        <img src="~assets/images/Menu.svg">
+                        <img src="~assets/images/Menu.min.svg">
                     </slot>
                 </template>
             </div>
             <div class="b-title-container">
-                <p class="title-site"><nuxt-link to='/'><img src="~assets/images/CLARA BARTHOD MALAT.svg"></nuxt-link></p>
+                <p class="title-site"><nuxt-link to='/'><img src="~assets/images/CLARA BARTHOD MALAT.min.svg"></nuxt-link></p>
             </div>
             <div class="b-index-container">
                 <template v-if="$route.path !== '/project' & $route.path !== '/project/'">
-                    <nuxt-link to='/project'><img src="~assets/images/Index.svg"></nuxt-link>
+                    <nuxt-link to='/project'><img src="~assets/images/Index.min.svg"></nuxt-link>
                 </template>
                 <template v-if="$route.path === '/project' || $route.path === '/project/'">
-                    <img @click="$router.go(-1)" src="~assets/images/Index.svg"/>
+                    <img @click="$router.go(-1)" src="~assets/images/Indexactive.min.svg"/>
                 </template>
             </div>
         </template>

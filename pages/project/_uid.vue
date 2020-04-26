@@ -52,17 +52,28 @@
         </section>
         <section class='b-project-footer'>
             <hr class='hr-top'/>
-            <div class='next-project'>
-                <template v-if='next = undefined'>
-                    <p class="title">
-                        Séries photographiques 007
-                    </p>
-                    <div class='next-link-container'>
-                        <img class='next-project-thumbnail'>
-                        <p>NEXT</p>
-                    </div>
-                </template>
+            <template  v-for="(project, index) in results">
+            <div class='next-project'  v-if="project.uid === paramUID" v-bind:key="index">
+                <p class="title">
+                    <template v-if='posts.results[index+1]'>
+                        {{ results[index+1].data.titre_du_projet[0].text }}
+                    </template>
+                    <template v-else-if='posts.results[0]'>
+                        {{ results[0].data.titre_du_projet[0].text }}
+                    </template>
+                </p>
+                <div class='next-link-container'>
+                    <template v-if='posts.results[index+1]'>
+                     <img class='next-project-thumbnail' :src='results[index+1].data.image_mis_en_avant.url'>
+                     <p><nuxt-link :to="'/project/' + results[index+1].uid">NEXT</nuxt-link></p>
+                    </template>
+                    <template v-else-if='posts.results[0]'>
+                     <img class='next-project-thumbnail' :src='results[0].data.image_mis_en_avant.url'>
+                     <p><nuxt-link :to="'/project/' + results[0].uid">NEXT</nuxt-link></p>
+                    </template>
+                </div>
             </div>
+            </template>
             <hr class='hr-bottom'/>
         </section>
     </div>
@@ -75,8 +86,14 @@ export default {
     try {
         const document = (await $prismic.api.getByUID('project_post', params.uid)).data
         const posts = (await $prismic.api.query($prismic.predicates.at('document.type', 'project_post')))
+        const paramUID = params.uid
+        console.log(document)
+        console.log(posts)
         return {
-            document
+            document,
+            posts,
+            results: posts.results,
+            paramUID
         }
     } catch (e) {
         error({ statusCode: 404, message: 'Page not found' })
@@ -255,12 +272,23 @@ export default {
                     border-radius: 200px;
                     text-align: center;
                     position: relative;
+                    transition: 500ms;
+                    filter: grayscale(1);
+                    &:hover{
+                        transition: 500ms;
+                        filter: grayscale(0);
+                        img,p>a{
+                            transition: 300ms;
+                            transform: scale(1.1);
+                        }
+                    }
                     img{
                          background-color: $background-menu;
                          height: 22vw;
                          width: 22vw;
                          border-radius: 200px;
                          overflow: hidden;
+                         transition: 300ms;
                     }
                     p{
                         position: absolute;
@@ -271,6 +299,10 @@ export default {
                         font-family: 'Times', 'Times New Roman', Times, serif;
                         color: white;
                         mix-blend-mode: difference;
+                        a{
+                            color:white;
+                            text-decoration: none;
+                        }
                     }
                 }
             }
