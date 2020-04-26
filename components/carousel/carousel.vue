@@ -34,7 +34,7 @@ export default {
     }
     .hidden{
         z-index: 50;
-        animation: hidden 1000ms ease-in-out;
+        animation: hidden 1500ms ease-in-out;
     }
 
     @keyframes hidden {
@@ -43,14 +43,14 @@ export default {
             display: block;
         }
         to{
-            transform: translate(-50%,150%);
+            transform: translate(150%,-50%);
             display: none;
         }
     }
 
     @keyframes appear {
         from{
-            transform: translateY(-100%);transform: translate(-50%,-150%);
+            transform: translate(-150%,-50%);
             display: block;
         }
         to{
