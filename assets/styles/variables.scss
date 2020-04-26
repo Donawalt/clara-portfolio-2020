@@ -50,3 +50,7 @@ src: url('/static/fonts/ROBOTO-REGULAR.TTF') format('ttf');
     src: url('/static/fonts/ROBOTO-BOLD.TTF'); /* IE9 Compat Mode */
     src: url('/static/fonts/ROBOTO-BOLD.TTF') format('ttf');
 }
+
+body{
+  overflow-x: hidden;
+}

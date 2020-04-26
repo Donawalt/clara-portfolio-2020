@@ -13,10 +13,10 @@
               <nuxt-link to="/" :class="$route === '/' ? 'is-active' : ''">Acceuil</nuxt-link>
             </li>
             <li @click="closeSidebarPanel">
-              <nuxt-link to="/project" :class="$route === '/project' ? 'is-active' : ''">Projets</nuxt-link>
+              <nuxt-link to="/project" :class="$route === '/project' ? 'is-active' : ''">Projet</nuxt-link>
             </li>
             <li @click="closeSidebarPanel">
-              <nuxt-link to="/contact" :class="$route === '/contact' ? 'is-active' : ''">Contactez</nuxt-link>
+              <nuxt-link to="/contact" :class="$route === '/contact' ? 'is-active' : ''">Contact</nuxt-link>
             </li>
           </ul>
         </slot>

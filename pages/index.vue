@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class='b-title-home'>
-      <h1 class="title"><span class='bold'>Clara</span> Barthold<br/> Malat</h1>
+      <h1 class="title"><span class='bold'>Clara</span> Barthod<br/> Malat</h1>
     </div>
     <div class='b-slider-info-home'>
       <div class='e-compteur'>

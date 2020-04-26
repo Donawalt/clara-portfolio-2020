@@ -3,6 +3,9 @@
         <template v-for="(slide, index) in data">
                 <img :class=" index+1 === active ? 'active' : 'hidden'"  :key="index" :src='slide.data.image_mis_en_avant.url' />
         </template>
+        <div id='b-slider-view'>
+          <p>Voir le projet </p>
+        </div>
     </div>
 </template>
 
@@ -20,6 +23,13 @@ export default {
         position: relative;
         width: 100%;
         height:100%;
+        &:hover{
+            background-color: red;
+            #b-slider-view{
+                transform: translateY(0%);
+                transition:500ms;
+            }
+        }
     }
     img{
         width: 50vw;
@@ -27,6 +37,21 @@ export default {
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
+    }
+    #b-slider-view{
+      position: absolute;
+      bottom: 0;
+      height: 70px;
+      width: 100%;
+      background: rgb(0,0,0);
+      background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,212,255,0) 100%);
+      color: white;
+      z-index: 110;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(100%);
+      transition: 500ms;
     }
     .active{
         z-index: 100;

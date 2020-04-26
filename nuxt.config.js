@@ -40,7 +40,7 @@ export default {
     // modules for full static before `nuxt export` (coming in v2.12)
     '~/modules/static',
     '~/modules/crawler',
-    '@nuxtjs/eslint-module',
+    // '@nuxtjs/eslint-module',
     '@nuxtjs/style-resources'
   ],
   /*
