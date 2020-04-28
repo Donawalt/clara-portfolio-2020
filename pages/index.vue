@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class='b-title-home'>
-      <h1 class="title"><span class='bold'>Clara</span> Barthod<br/> Malat</h1>
+      <h1 class="title" aria-label="Clara Barthold Malat"><p><span class='bold'>Clara</span></p> <p><span>Barthod</span></p><p><span>Malat</span></p></h1>
     </div>
     <div class='b-slider-info-home'>
       <div class='e-compteur'>
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import transitions from '@/transitions.js'
 import carousel from '@/components/carousel/carousel'
 export default {
   data: () => ({
@@ -55,6 +56,9 @@ export default {
   },
   mounted () {
     this.next()
+  },
+  transition: () => {
+    return transitions.projectToHome
   }
 }
 </script>
@@ -75,7 +79,7 @@ export default {
     grid-row: row-4 / 4;
     font-size: 50px;
     text-transform: uppercase;
-    .title>.bold{
+    .title .bold{
       font-family: 'Roboto-bold', 'Roboto', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
       font-style: initial;
     }

@@ -69,6 +69,10 @@ export default {
   /*
    ** Build configuration
    */
+  transition: {
+    name: 'clara',
+    mode: 'out-in'
+  },
   build: {
     /*
      ** You can extend webpack config here

@@ -16,11 +16,13 @@
     "@nuxtjs/observable": "0.0.1-alpha",
     "@nuxtjs/prismic": "^1.1.1",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "animejs": "^3.2.0",
     "axios": "^0.19.2",
     "nuxt": "^2.0.0",
     "prismic-dom": "^2.2.3",
     "prismic-javascript": "^2.7.1",
-    "prismic-vue": "^2.0.0"
+    "prismic-vue": "^2.0.0",
+    "splitting": "^1.0.6"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",

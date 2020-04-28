@@ -6,7 +6,7 @@
         </div>
         <ul v-for="(project, index) in results" v-bind:key="index">
             <li v-on:mouseover="updateImage(index, results)">
-                <nuxt-link :to="'/project/' + project.uid">
+                <nuxt-link :to="'/project/' + project.uid" class='link-project'>
                     <span class='number-project'>00{{ index + 1  }} </span><span class='title-project'>{{ project.data.titre_du_projet[0].text }}</span>
                 </nuxt-link>
             </li>
@@ -15,6 +15,8 @@
   </div>
 </template>
 <script>
+import transitions from '@/transitions.js'
+
 export default {
   data: () => ({
     urlIndex: ''
@@ -37,6 +39,9 @@ export default {
       console.log(results)
       this.urlIndex = `background-image: url(${results[index].data.image_mis_en_avant.url})`;
     }
+  },
+  transition(to, from){
+    return to.name === 'project-uid' ? transitions.ListToProject : transitions.projectToHome
   }
 }
 </script>
@@ -51,9 +56,11 @@ export default {
       padding-bottom: 50vh;
       li{
           margin-bottom: 40px;
+          overflow:hidden;
       }
       a{
           text-decoration: none;
+          display: block;
       }
       .number-project{
           display: inline-block;
@@ -95,7 +102,7 @@ export default {
         background-color: $background-menu;
         background-position: center;
         background-size: cover;
-        grid-column: col-3/ col- ;
+        grid-column: 3/ 5 ;
         grid-row: row-2/row-4;
     }
   }
