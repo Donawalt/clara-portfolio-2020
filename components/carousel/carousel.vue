@@ -32,7 +32,7 @@ export default {
         }
     }
     img{
-        width: 50vw;
+        height: 100vw;
         position: absolute;
         top: 50%;
         left: 50%;

@@ -15,20 +15,20 @@
       <template v-if="slice.slice_type === 'deux_image'">
         <template v-if="slice.primary.size_img === 'true'">
           <section class="deux right">
-            <span class="left-image">
+            <span class="left-image rellax" data-rellax-speed="-2">
               <prismic-image :field="slice.primary.left_img"></prismic-image>
             </span>
-            <span class="right-image">
+            <span class="right-image" data-rellax-speed="4">
               <prismic-image :field="slice.primary.right_img"></prismic-image>
             </span>
           </section>
         </template>
         <template v-if="slice.primary.size_img != 'true'">
           <section class="deux left">
-            <span class="left-image">
+            <span class="left-image rellax" data-rellax-speed="4">
               <prismic-image :field="slice.primary.left_img"></prismic-image>
             </span>
-            <span class="right-image">
+            <span class="right-image rellax" data-rellax-speed="-2">
               <prismic-image :field="slice.primary.right_img"></prismic-image>
             </span>
           </section>
@@ -40,19 +40,19 @@
       <template v-if="slice.slice_type === 'tryptique_image'">
         <div class="img-tri">
           <span>
-            <prismic-image :field="slice.primary.left_img" />
-            <prismic-image :field="slice.primary.center_img" />
-            <prismic-image :field="slice.primary.right_img" />
+            <prismic-image :field="slice.primary.left_img" :class="'rellax'"/>
+            <prismic-image :field="slice.primary.center_img" :class="'rellax'" data-rellax-speed="2"/>
+            <prismic-image :field="slice.primary.right_img" :class="'rellax'"/>
           </span>
         </div>
       </template>
       <template v-if="slice.slice_type === 'image_unique_'">
         <div class="image-unique">
-          <prismic-image :field="slice.primary.image" />
+          <prismic-image :field="slice.primary.image" :class="'rellax'" data-rellax-speed="1"/>
         </div>
       </template>
       <template v-if="slice.slice_type === 'video_'">
-        <prismic-embed class="embed-video" :field="slice.primary.liens_video" />
+        <prismic-embed class="embed-video" :field="slice.primary.liens_video" :class="'rellax'"/>
       </template>
     </section>
     <section class="b-project-footer">
@@ -92,6 +92,7 @@
 <script>
 /* eslint-disable */
 import transitions from '@/transitions.js'
+import Rellax from 'rellax';
 import anime from "animejs";
 export default {
   async asyncData({ params, $prismic, error }) {

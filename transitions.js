@@ -1,5 +1,6 @@
 /* es-lint-disable */
 import anime from 'animejs'
+import Rellax from 'rellax'
 
 export const transitions = {
   ListToProject: {
@@ -34,7 +35,12 @@ export const transitions = {
         const tl = anime.timeline({
           duration: 500,
           easing: 'easeInOutQuad',
-          complete: done,
+          complete: ()=>{
+            var rellax = new Rellax('.rellax', {
+              center: true
+            });
+            done;
+          },
           delay: 1000
         })
 
@@ -66,7 +72,12 @@ export const transitions = {
       const tl = anime.timeline({
         duration: 500,
         easing: 'easeInOutQuad',
-        complete: done
+        complete: ()=>{
+          var rellax = new Rellax('.rellax', {
+            center: true
+          });
+          done;
+        }
       })
 
       tl.add({
