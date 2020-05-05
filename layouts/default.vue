@@ -3,17 +3,20 @@
     <HeaderA />
     <nuxt />
     <Sidebar />
+    <SplashScreen />
   </div>
 </template>
 
 <script>
 import HeaderA from '../components/header.vue'
 import Sidebar from '../components/sidebar.vue'
+import SplashScreen from '../components/splashScreen.vue'
 
 export default {
   components: {
     HeaderA,
-    Sidebar
+    Sidebar,
+    SplashScreen
   }
 }
 </script>

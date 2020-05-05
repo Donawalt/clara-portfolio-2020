@@ -116,7 +116,7 @@ export default {
     }
   },
   transition(to, from) {
-      return from.name === 'project' ? '' : transitions.projectToHome;
+    if(from) { return from.name === 'project' ? '' : transitions.projectToHome}
   }
 };
 </script>
