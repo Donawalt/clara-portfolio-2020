@@ -117,6 +117,12 @@ export default {
   },
   transition(to, from) {
     if(from) { return from.name === 'project' ? '' : transitions.projectToHome}
+  }, 
+  mounted: ()=> {
+    var rellax = new Rellax('.rellax', {
+      center: true
+    });
+    document.querySelector('body').classList.add('parallax')
   }
 };
 </script>

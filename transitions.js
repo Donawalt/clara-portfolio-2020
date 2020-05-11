@@ -67,6 +67,8 @@ export const transitions = {
         targets: el,
         opacity: 0
       })
+
+      document.querySelector('body').classList.remove('parallax')
     },
     enter: (el, done) => {
       const tl = anime.timeline({
@@ -76,6 +78,7 @@ export const transitions = {
           var rellax = new Rellax('.rellax', {
             center: true
           });
+          document.querySelector('body').classList.add('parallax')
           done;
         }
       })
