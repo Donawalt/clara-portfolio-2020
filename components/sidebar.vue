@@ -73,6 +73,12 @@ export default {
   height: 100vh;
   z-index: 999;
   width: 25.4133333vw;
+  @include tablet {
+    width: 53.826666vw;
+  }
+  @include mobile {
+    width: 79vw;
+  }
   padding-top: 3.3333333vw;
   padding-left: 3.3333333vw;
   display: grid;

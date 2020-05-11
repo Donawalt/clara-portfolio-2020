@@ -35,7 +35,9 @@ export default {
         tl.add({
           targets: "#splash .main-logo .logo",
           opacity: [0, 1],
-          translateY: ["50%", 0]
+          scale: [400, 1],
+          translateY: ["50%", 0], 
+          easing: 'easeOutQuint'
         });
       });
     });
@@ -48,17 +50,16 @@ export default {
 
         tl1.add({
             targets: '#splash .main-logo .logo', 
-            opacity: 0, 
-            translateY: '50vh'
+            opacity: [1, 0], 
+            easing: 'easeInOutQuad',
         }).add({
           targets: ".panel",
           translateY: [0, "-101vh"],
           delay: anime.stagger(300, {direction: 'reverse'}),
           easing: 'easeOutQuint'
-        }, "-=2000").add({
+        }).add({
             targets: '.container', 
             opacity: [0, 1],
-            scale: [0.9, 1], 
             easing: 'easeInQuint'
         }, "-=2000")
       });
@@ -85,6 +86,7 @@ export default {
     top: 0;
     position: absolute;
     background-color: $background-color;
+    overflow: hidden;
     &:nth-child(1) {
       background-color: $background-menu;
     }

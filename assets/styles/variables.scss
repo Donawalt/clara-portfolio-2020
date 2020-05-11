@@ -1,6 +1,9 @@
 $background-color : #FFF1E3;
 $background-menu : #71B885;
 
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
 // Font Face \\
 @font-face {
   font-family: 'Times';
@@ -54,4 +57,22 @@ src: url('/static/fonts/ROBOTO-REGULAR.TTF') format('ttf');
 body{
   overflow-x: hidden;
   background-color: $background-color;
+}
+
+@mixin mobile {
+  @media (max-width: #{$tablet-width}){
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
 }

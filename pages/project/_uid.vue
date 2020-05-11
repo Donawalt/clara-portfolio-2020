@@ -219,8 +219,11 @@ export default {
         width: 100vw;
         height: 100vh;
         img {
-          height: 70vh;
-          max-width: 45.83333327vw;
+          height: 50vh; 
+          @media screen and (orientation: portrait) {
+            height: auto;
+            width: 50vw;
+          }
         }
       }
       .deux {

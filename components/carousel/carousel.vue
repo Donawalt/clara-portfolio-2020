@@ -39,6 +39,12 @@ export default {
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
+        @media screen and (orientation: portrait){
+            min-width: 100vw;
+            min-height: 100vh;
+            height: auto;
+            max-height: 150vh ;
+        }
     }
     #b-slider-view{
       position: absolute;
