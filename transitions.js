@@ -35,20 +35,21 @@ export const transitions = {
         const tl = anime.timeline({
           duration: 500,
           easing: 'easeInOutQuad',
-          complete: ()=>{
-            var rellax = new Rellax('.rellax', {
-              center: true
-            });
+          complete: ()  => {
+
             done;
           },
           delay: 1000
         })
 
-        console.log('enter')
+        console.log(el)
         tl.add({
           targets: titleProject,
           opacity: [0, 1],
-          translateY: ['50%', 0]
+          translateY: ['50%', 0],
+          complete: ()=>{
+            document.querySelector('.container').classList.add('parallax')
+          }
         })
       }, 1000)
     }
@@ -78,7 +79,7 @@ export const transitions = {
           /* var rellax = new Rellax('.rellax', {
             center: true
           }); */
-          document.querySelector('.project').classList.add('parallax')
+          // document.querySelector('.project').classList.add('parallax')
           done;
         }
       })

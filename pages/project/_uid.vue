@@ -119,14 +119,14 @@ export default {
     if(from) { return from.name === 'project' ? '' : transitions.projectToHome}
   }, 
   mounted: ()=> {
-   if (document.querySelector('.project').classList.contains('parallax')){
-     console.log('rellax');
-   }
-   else {
+    setTimeout(() => {
       var rellax = new Rellax('.rellax', {
-      center: true
+       center: true
+      }, 5000);
+      document.addEventListener('scroll', ()=>{
+        rellax.refresh();
+      })
     });
-   }
   }
 };
 </script>
