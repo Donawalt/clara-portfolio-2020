@@ -13,17 +13,17 @@
     </section>
     <section class="b-project-body" v-for="(slice, index) in document.body" :key="'slice-' + index">
       <template v-if="slice.slice_type === 'deux_image'">
-        <template v-if="slice.primary.size_img === 'true'">
+        <template v-if="slice.primary.size_img === true">
           <section class="deux right">
             <span class="left-image rellax" data-rellax-speed="-2">
               <prismic-image :field="slice.primary.left_img"></prismic-image>
             </span>
-            <span class="right-image" data-rellax-speed="4">
+            <span class="right-image rellax" data-rellax-speed="4">
               <prismic-image :field="slice.primary.right_img"></prismic-image>
             </span>
           </section>
         </template>
-        <template v-if="slice.primary.size_img != 'true'">
+        <template v-if="slice.primary.size_img != true">
           <section class="deux left">
             <span class="left-image rellax" data-rellax-speed="4">
               <prismic-image :field="slice.primary.left_img"></prismic-image>

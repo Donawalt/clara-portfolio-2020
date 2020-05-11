@@ -158,6 +158,18 @@ export default {
     margin-bottom: -3.3333333vw;
     overflow: hidden;
   }
+  @include mobile {
+    grid-template-columns: [col-1]1fr [col-2]1fr;
+    grid-template-rows: [row-1]1fr [row-2]1fr [row-3]1fr;
+
+    .b-slider-info-home{
+      grid-column: col-1/1;
+      grid-row: row-1/row-3;
+    }
+    .b-slider-img{
+      grid-column: col-2/col-2;
+    }
+  }
 }
 </style>
 <style>
