@@ -75,10 +75,10 @@ export const transitions = {
         duration: 500,
         easing: 'easeInOutQuad',
         complete: ()=>{
-          var rellax = new Rellax('.rellax', {
+          /* var rellax = new Rellax('.rellax', {
             center: true
-          });
-          document.querySelector('body').classList.add('parallax')
+          }); */
+          document.querySelector('.project').classList.add('parallax')
           done;
         }
       })

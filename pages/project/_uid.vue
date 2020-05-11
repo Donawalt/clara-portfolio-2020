@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container project">
     <!-- {{ $prismic.asText(document['project-banner'][0].title_of_the_project) }} -->
     <section class="b-project-header">
       <div class="banner" :style="{ backgroundImage: `url(${document.image_mis_en_avant.url})` }"></div>
@@ -14,7 +14,7 @@
     <section class="b-project-body" v-for="(slice, index) in document.body" :key="'slice-' + index">
       <template v-if="slice.slice_type === 'deux_image'">
         <template v-if="slice.primary.size_img === true">
-          <section class="deux right">
+          <section class="deux left">
             <span class="left-image rellax" data-rellax-speed="-2">
               <prismic-image :field="slice.primary.left_img"></prismic-image>
             </span>
@@ -23,8 +23,8 @@
             </span>
           </section>
         </template>
-        <template v-if="slice.primary.size_img != true">
-          <section class="deux left">
+        <template v-if="slice.primary.size_img != true ">
+          <section class="deux right">
             <span class="left-image rellax" data-rellax-speed="4">
               <prismic-image :field="slice.primary.left_img"></prismic-image>
             </span>
@@ -119,10 +119,14 @@ export default {
     if(from) { return from.name === 'project' ? '' : transitions.projectToHome}
   }, 
   mounted: ()=> {
-    var rellax = new Rellax('.rellax', {
+   if (document.querySelector('.project').classList.contains('parallax')){
+     console.log('rellax');
+   }
+   else {
+      var rellax = new Rellax('.rellax', {
       center: true
     });
-    document.querySelector('body').classList.add('parallax')
+   }
   }
 };
 </script>
