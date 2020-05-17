@@ -98,6 +98,7 @@ export default {
   column-gap: 1.666666667vw;
   row-gap: 1.666666667vw;
   background-color: $background-color;
+  will-change: opacity;
   .b-title-home {
     grid-row: row-4 / 4;
     font-size: 50px;
@@ -131,7 +132,7 @@ export default {
       p.project-title {
         font-weight: bold;
         width: 30px;
-        height: 500px;
+        height: 300px;
         position: relative;
         overflow: hidden;
         .element {
@@ -159,7 +160,7 @@ export default {
     overflow: hidden;
   }
   @include mobile {
-    grid-template-columns: [col-1]1fr [col-2]1fr;
+    grid-template-columns: [col-1] minmax(1px, 1fr) [col-2] minmax(1px, 1fr);
     grid-template-rows: [row-1]1fr [row-2]1fr [row-3]1fr;
 
     .b-slider-info-home{
@@ -168,6 +169,23 @@ export default {
     }
     .b-slider-img{
       grid-column: col-2/col-2;
+    }
+    .compteur-text{
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+    }
+    .b-title-home{
+      grid-row: row-3 / 3;
+      h1 {
+        position: absolute;
+        z-index: 150;
+        mix-blend-mode: difference;
+        color: white;
+        bottom: 0;
+      }
     }
   }
 }

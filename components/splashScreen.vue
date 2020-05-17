@@ -1,6 +1,6 @@
 <template>
   <div id="splash">
-    <div class="panel"></div>
+    <div class="panel first"></div>
     <div class="panel">
       <p class="main-logo">
         <img class="logo" src="~assets/images/CLARA BARTHOD MALAT.min.svg" />
@@ -73,7 +73,7 @@ export default {
   height: 100vh;
   width: 100vw;
   pointer-events: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 8000;

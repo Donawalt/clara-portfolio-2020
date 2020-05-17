@@ -115,16 +115,20 @@ export default {
       error({ statusCode: 404, message: "Page not found" });
     }
   },
-  transition(to, from) {
+  transition: (to, from) => {
     if(from) { return from.name === 'project' ? '' : transitions.projectToHome}
   }, 
   mounted: ()=> {
+    var parallax = false ;
     setTimeout(() => {
       var rellax = new Rellax('.rellax', {
        center: true
       }, 5000);
       document.addEventListener('scroll', ()=>{
-        rellax.refresh();
+        if (parallax === false){
+          rellax.refresh();
+          parallax = true;
+        }
       })
     });
   }
@@ -136,6 +140,7 @@ export default {
   width: 100vw;
   min-height: 100vh;
   background-color: $background-color;
+  will-change: opacity;
   section {
     padding: 3.3333333vw;
     display: grid;

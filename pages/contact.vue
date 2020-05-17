@@ -35,6 +35,7 @@ export default {
   align-items: center;
   text-align: center;
   background-color: $background-color;
+  will-change: opacity;
 }
 
 .title {

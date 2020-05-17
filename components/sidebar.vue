@@ -10,7 +10,7 @@
         <slot>
           <ul>
             <li @click="closeSidebarPanel">
-              <nuxt-link to="/" :class="$route === '/' ? 'is-active' : ''">Acceuil</nuxt-link>
+              <nuxt-link to="/" :class="$route === '/' ? 'is-active' : ''">Accueil</nuxt-link>
             </li>
             <li @click="closeSidebarPanel">
               <nuxt-link to="/project" :class="$route === '/project' ? 'is-active' : ''">Projet</nuxt-link>

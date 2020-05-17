@@ -59,35 +59,42 @@ export const transitions = {
     css: false,
     leave: (el, done) => {
       const tl = anime.timeline({
-        duration: 500,
+        duration: 1000,
         easing: 'easeInOutQuad',
         complete: done
       })
 
       tl.add({
         targets: el,
-        opacity: 0
-      })
+        translateY: ['0', '-70vh']
+      }).add({
+        targets: '.panel.first',
+        translateY: ['101vh', '0']
+      }, '-=800')
 
       document.querySelector('body').classList.remove('parallax')
     },
     enter: (el, done) => {
       const tl = anime.timeline({
-        duration: 500,
+        duration: 800,
         easing: 'easeInOutQuad',
         complete: ()=>{
           /* var rellax = new Rellax('.rellax', {
             center: true
           }); */
           // document.querySelector('.project').classList.add('parallax')
+          el.style.transform = '';
           done;
         }
       })
 
       tl.add({
+        targets: '.panel.first',
+        translateY: ['0', '-101vh']
+      }).add({
         targets: el,
-        opacity: [0, 1]
-      })
+        translateY: ['70vh', '0']
+      },'-=700')
     }
   }
 }

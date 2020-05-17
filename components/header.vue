@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header style='mix-blend-mode: difference'>
         <template v-if='$route.path === "/"'>
             <div id='b-menu-container' class="b-menu-container" :class="{ 'active' : isOpen }" @click.prevent="toggle">
                 <template v-if='isOpen'>
@@ -71,6 +71,7 @@ export default {
         column-gap:1.666666667vw;
         z-index: 1000;
         mix-blend-mode: difference;
+        will-change: opacity;
         a,p,span{
             color:white;
         }
