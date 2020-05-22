@@ -66,7 +66,8 @@ export const transitions = {
 
       tl.add({
         targets: el,
-        translateY: ['0', '-70vh']
+        translateY: ['0', '-70vh'],
+        easing: 'easeInQuad'
       }).add({
         targets: '.panel.first',
         translateY: ['101vh', '0']
@@ -93,7 +94,8 @@ export const transitions = {
         translateY: ['0', '-101vh']
       }).add({
         targets: el,
-        translateY: ['70vh', '0']
+        translateY: ['70vh', '0'],
+        easing: 'easeOutQuad'
       },'-=700')
     }
   }

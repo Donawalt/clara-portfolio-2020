@@ -57,6 +57,9 @@ export default {
       li{
           margin-bottom: 40px;
           overflow:hidden;
+          @include mobile {
+            margin-bottom: 20px;
+          }
       }
       a{
           text-decoration: none;
@@ -68,6 +71,9 @@ export default {
           font-weight: bold;
           color: #FFF1E3;
           margin-right: 20px;
+          @include mobile {
+            transform: translateY(-20%);
+          }
       }
       .title-project{
           font-size: 110px;
@@ -78,6 +84,10 @@ export default {
           mix-blend-mode: difference;
            -webkit-text-stroke: 1px white ;
            transition: 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+           @include mobile {
+             font-size: 28px;
+             -webkit-text-stroke: 0.5px white ;
+           }
           &:hover{
               font-style: italic;
               color: white;

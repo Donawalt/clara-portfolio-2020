@@ -40,9 +40,9 @@
       <template v-if="slice.slice_type === 'tryptique_image'">
         <div class="img-tri">
           <span>
-            <prismic-image :field="slice.primary.left_img" :class="'rellax'"/>
-            <prismic-image :field="slice.primary.center_img" :class="'rellax'" data-rellax-speed="2"/>
-            <prismic-image :field="slice.primary.right_img" :class="'rellax'"/>
+            <prismic-image :field="slice.primary.left_img" :class="'rellax img-left'"/>
+            <prismic-image :field="slice.primary.center_img" :class="'rellax img-center'" data-rellax-speed="2"/>
+            <prismic-image :field="slice.primary.right_img" :class="'rellax img-right'"/>
           </span>
         </div>
       </template>
@@ -120,17 +120,29 @@ export default {
   }, 
   mounted: ()=> {
     var parallax = false ;
-    setTimeout(() => {
       var rellax = new Rellax('.rellax', {
        center: true
-      }, 5000);
-      document.addEventListener('scroll', ()=>{
+      });
+    setInterval(() => {
+      if(window.innerWidth < 768) {
+        rellax.destroy();
+      }else{
+        rellax.refresh();
+      }
+    }, 500);
+    setTimeout(() => {
+      if(window.innerWidth < 768) {
+        rellax.destroy();
+      }else {
+        document.addEventListener('scroll', ()=>{
         if (parallax === false){
           rellax.refresh();
           parallax = true;
+          console.log(parallax);
         }
       })
-    });
+      }
+    }, 1000);
   }
 };
 </script>
@@ -169,6 +181,10 @@ export default {
         font-family: "Times New Roman", Times, serif;
         font-weight: bold;
         text-transform: uppercase;
+        @include mobile {
+          grid-column: col-1 / col-5;
+          font-size: 30px;
+        }
       }
     }
     &.b-project-description {
@@ -199,9 +215,14 @@ export default {
       }
     }
     &.b-project-body {
-      display: block;
+/*       display: block;
       padding: 0px;
-      position: relative;
+      position: relative; */
+      // @include mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+     //}
       .img-full {
         width: 100vw;
       }
@@ -226,6 +247,37 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+
+        @include mobile{
+          display: block;
+          span{
+          width: 100vw;
+          min-height: 100vh;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 1fr 1fr 1fr;
+          grid-column-gap: 5vw;
+          grid-row-gap: 20px;
+          img{
+            width: 30vw;
+          }
+          .img-right{
+            margin: auto;
+            grid-column: 1;
+            grid-row: 1;
+          }
+          .img-center{
+            margin:auto;
+            grid-column: 2;
+            grid-row: 2;
+          }
+          .img-left{
+            margin:auto;
+            grid-column: 1;
+            grid-row: 3;
+          }
+        }
+          }
       }
       .image-unique {
         display: flex;
@@ -249,10 +301,17 @@ export default {
         row-gap: 0px;
         column-gap: 1.666666667vw;
         min-height: 100vh;
+        @include mobile {
+          display: flex;
+          flex-direction: column;
+        }
         &.right {
           .right-image {
             img {
               width: 22.083333333vw;
+              @include mobile {
+                width: 60vw;
+              }
             }
           }
         }
@@ -260,6 +319,9 @@ export default {
           .left-image {
             img {
               width: 22.083333333vw;
+              @include mobile {
+                width: 60vw;
+              }
             }
           }
         }
@@ -270,6 +332,9 @@ export default {
           display: flex;
           justify-content: center;
           align-items: center;
+          @include mobile{
+            margin: 16px;
+          }
         }
         .left-image {
           grid-column: col-1/col-3;
@@ -295,6 +360,11 @@ export default {
         grid-row: row-2 / row-4;
         display: flex;
         justify-content: space-between;
+        @include mobile {
+          justify-content: space-around;
+          flex-direction: column;
+          align-items: center;
+        }
         .title {
           font-family: "Roboto", Arial, Helvetica, sans-serif;
           font-weight: bold;
@@ -304,6 +374,13 @@ export default {
           -webkit-text-stroke: 2px black;
           display: flex;
           align-items: center;
+          @include mobile {
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            font-size: 30px;
+            -webkit-text-stroke: 1px black;
+          }
         }
         .next-link-container {
           height: 22vw;
@@ -339,6 +416,9 @@ export default {
             font-family: "Times", "Times New Roman", Times, serif;
             color: white;
             mix-blend-mode: difference;
+            @include mobile {
+              font-size: 25px;
+            }
             a {
               color: white;
               text-decoration: none;
