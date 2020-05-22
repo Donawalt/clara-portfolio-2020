@@ -237,7 +237,7 @@ export default {
         }
       }
       .img-tri {
-        height: 100vw;
+        min-height: 100vw;
         width: 100vw;
 
         img {
